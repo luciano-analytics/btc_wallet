@@ -1,5 +1,5 @@
 
-![Banner do Projeto BTC](../imgs/carteira_btc.jpg)
+![Banner do Projeto BTC](imgs/carteira_btc.jpg)
 
 ---
 
