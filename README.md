@@ -1,5 +1,5 @@
 
-![Banner do Projeto BTC](imgs/carteira_btc.jpg)
+![Banner do Projeto BTC](imgs/carteira_btc.webp)
 
 ---
 
@@ -156,3 +156,10 @@ jupyter notebook notebooks/geracao_carteira_btc_testnet.ipynb
 
 ---
 
+## 📜 Licença
+
+Este projeto está licenciado sob a [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).
+
+---
+
+⚠️ Este projeto é destinado a fins educacionais e de validação técnica. Não deve ser utilizado em ambientes de produção ou com fundos reais.
