@@ -48,95 +48,97 @@ Este projeto tem como objetivo gerar carteiras Bitcoin no padrão Bech32 (BIP84)
 
 ## 📂 Estrutura do Projeto
 
-🟦 btc_wallet_testnet_py/  
-├── 🟨 imgs/  
-│   └── 📄 carteira_btc.jpg  
-│       → Imagem ilustrativa usada no topo do README  
-│  
-├── 🟨 notebooks/  
-│   └── 📄 geracao_carteira_btc_testnet.ipynb  
-│       → Notebook principal com explicações e execução do projeto  
-│  
-├── 🟨 src/  
-│   └── 🟨 btc_wallet_testnet/  
-│       ├── 📄 __init__.py  
-│       → Arquivo que define o pacote e expõe funções principais  
-│       └── 📄 create_wallet.py  
-│       → Módulo com toda a lógica de geração da carteira  
-│ 
-├── 🟨 tests/ 
-│ └── 📄 test_wallet.py 
-│ → Teste automatizado com pytest para validar a função gerar_carteira() 
-│ 
-├── 📄 README.md 
-│ → Documento explicativo com descrição, etapas e testes 
-│ 
-├── 📄 pyproject.toml 
-│ → Configuração do projeto e dependências gerenciadas via Poetry 
-│ 
-├── 📄 poetry.lock 
-│ → Registro das versões exatas das dependências instaladas
+```text
+
+🟦 btc_wallet/
+├── 🟨 imgs/
+│   └── 📄 carteira_btc.jpg
+│       → Imagem ilustrativa usada no topo do README
+│
+├── 🟨 notebooks/
+│   └── 📄 geracao_carteira_btc_testnet.ipynb
+│       → Notebook principal com explicações e execução do projeto
+│
+├── 🟨 src/
+│   └── 🟨 btc_wallet_testnet/
+│       ├── 📄 __init__.py
+│       └── 📄 create_wallet.py
+│           → Módulo com toda a lógica de geração da carteira
+│
+├── 🟨 tests/
+│   └── 📄 test_wallet.py
+│       → Teste automatizado com pytest para validar a função gerar_carteira_bech32()
+│
+├── 📄 README.md
+│   → Documento explicativo com descrição, etapas e testes
+│
+├── 📄 pyproject.toml
+│   → Configuração do projeto e dependências gerenciadas via Poetry
+│
+├── 📄 poetry.lock
+│   → Registro das versões exatas das dependências instaladas
 
 🔎 Legenda: 
 🟦 Raiz do projeto
 🟨 Pasta
 📄 Arquivo
- → Descrição funcional
+→ Descrição funcional
 
+```
 ---
 
 ## ⚙️ Preparando o ambiente com Poetry
 
 Este projeto utiliza [Poetry](https://python-poetry.org/) para gerenciamento de dependências e ambiente virtual. Siga os passos abaixo para configurar corretamente:
 
-```bash
-# Acesse a pasta do projeto
+### Acesse a pasta do projeto
 cd btc_wallet
 
-# Inicialize o projeto com Poetry (caso ainda não tenha o pyproject.toml)
+
+### Inicialize o projeto com Poetry (caso ainda não tenha o pyproject.toml)
 poetry init --name "btc_wallet_testnet" \
             --description "Geração de carteira BTC Bech32 para testnet" \
             --author "Luciano Magalhães" \
             --python "^3.12"
 
-# Instale as dependências principais
+
+### Instale as dependências principais
 poetry add bip-utils ipykernel
 
-# Ative o ambiente virtual
+### Ative o ambiente virtual
 poetry shell
 
 ---
 
-## 🚀 Como executar
+## 🚀 Como Executar
 
-### 💻 Via VS Code com Poetry
+## 💻 Via VS Code com Poetry
 
-```bash
-# Clonar o repositório principal
+### Clonar o repositório principal
 git clone https://github.com/luciano-analytics/projetos.git
 cd projetos/p7
 
-# Instalar o Poetry (caso ainda não tenha)
+### Instalar o Poetry (caso ainda não tenha)
 curl -sSL https://install.python-poetry.org | python3 -
 
-# Instalar dependências e ativar ambiente virtual
+### Instalar dependências e ativar ambiente virtual
 poetry install
 poetry shell
 
-# Executar o script principal
+### Executar o script principal
 python src/btc_wallet_testnet/create_wallet.py
 
 
-### 💻 📓 Via Jupyter Notebook
+## 💻 📓 Via Jupyter Notebook
 
-# Ativar o ambiente Poetry
+### Ativar o ambiente Poetry
 poetry shell
 
-# Adicionar kernel Jupyter (se necessário)
+### Adicionar kernel Jupyter (se necessário)
 poetry add ipykernel
 python -m ipykernel install --user --name btc_wallet_testnet_py --display-name "Python (btc_wallet_testnet_py)"
 
-# Abrir o notebook
+### Abrir o notebook
 jupyter notebook notebooks/geracao_carteira_btc_testnet.ipynb
 
 ---
