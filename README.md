@@ -1,158 +1,197 @@
-
-![Banner do Projeto BTC](../imgs/carteira_btc.jpg)
-
----
-
-# Geração de Carteira Bitcoin Bech32 (Testnet) em Python
-
-📍 **Autor**: Luciano Magalhães  
-📍 **Local**: Belo Horizonte, MG — Brasil  
-📍 **Área**: Desenvolvimento de Software / Blockchain  
-📍 **Versão**: 1.0  
-📍 **Data**: Setembro, 2025  
+![Banner do Projeto BTC](imgs/carteira_btc.webp)
 
 ---
 
-## 📌 Descrição do Projeto
+# Projeto completo: Geração de Carteira + Simulação de Transação Bitcoin (Testnet)
 
-Este projeto tem como objetivo gerar carteiras Bitcoin no padrão Bech32 (BIP84) para a rede de testes (testnet), utilizando padrões reconhecidos como BIP39 para mnemônicos e BIP84 para derivação hierárquica de chaves. A estrutura é modular, clara e voltada para fins educacionais, validações técnicas e simulações seguras.
-
----
-
-## 🧠 Como a carteira é construída — Etapas Técnicas
-
-1. **Geração da mnemônica (BIP39)**  
-   → Criação de uma frase de 12 ou 24 palavras com entropia criptográfica.
-
-2. **Derivação da seed**  
-   → Conversão da mnemônica em bytes para uso com algoritmos de derivação.
-
-3. **Aplicação do caminho BIP84**  
-   → Geração da chave privada e endereço Bech32 (`tb1...`) para testnet.
-
-4. **Encapsulamento dos dados**  
-   → Uso de `dataclass(frozen=True)` para garantir imutabilidade da estrutura `Carteira`.
-
-5. **Importação modular**  
-   → O pacote `btc_wallet_testnet` permite uso direto em notebooks e scripts externos.
+📍 **Autor:** Luciano Magalhães  
+📍 **Local:** Belo Horizonte, MG — Brasil  
+📍 **Área:** Desenvolvimento de Software / Blockchain  
+📍 **Versão:** 1.2  
+📍 **Data:** Setembro, 2025  
 
 ---
 
-## 🧪 Exemplos de Testes
+## 🧩 Visão geral
 
-- Validação do prefixo `tb1` para garantir rede de testes.
-- Geração de múltiplas carteiras com diferentes mnemônicos.
-- Verificação da integridade da estrutura imutável `Carteira`.
+Este repositório **reúne dois módulos** complementares que cobrem o ciclo completo de uso de Bitcoin em ambiente de testes (testnet):
 
----
+1) Geração de Carteira Bitcoin Bech32 (Testnet)  
 
-## 📂 Estrutura do Projeto
+2) Simulação de Transação Bitcoin na Testnet
 
-```text
-
-🟦 btc_wallet/
-├── 🟨 imgs/
-│   └── 📄 carteira_btc.jpg
-│       → Imagem ilustrativa usada no topo do README
-│
-├── 🟨 notebooks/
-│   └── 📄 geracao_carteira_btc_testnet.ipynb
-│       → Notebook principal com explicações e execução do projeto
-│
-├── 🟨 src/
-│   └── 🟨 btc_wallet_testnet/
-│       ├── 📄 __init__.py
-│       └── 📄 create_wallet.py
-│           → Módulo com toda a lógica de geração da carteira
-│
-├── 🟨 tests/
-│   └── 📄 test_wallet.py
-│       → Teste automatizado com pytest para validar a função gerar_carteira_bech32()
-│
-├── 📄 README.md
-│   → Documento explicativo com descrição, etapas e testes
-│
-├── 📄 pyproject.toml
-│   → Configuração do projeto e dependências gerenciadas via Poetry
-│
-├── 📄 poetry.lock
-│   → Registro das versões exatas das dependências instaladas
-
-🔎 Legenda: 
-🟦 Raiz do projeto
-🟨 Pasta
-📄 Arquivo
-→ Descrição funcional
-
-```
----
-
-## ⚙️ Preparando o ambiente com Poetry
-
-Este projeto utiliza [Poetry](https://python-poetry.org/) para gerenciamento de dependências e ambiente virtual. Siga os passos abaixo para configurar corretamente:
-
-### Acesse a pasta do projeto
-cd btc_wallet
-
-
-### Inicialize o projeto com Poetry (caso ainda não tenha o pyproject.toml)
-poetry init --name "btc_wallet_testnet" \
-            --description "Geração de carteira BTC Bech32 para testnet" \
-            --author "Luciano Magalhães" \
-            --python "^3.12"
-
-
-### Instale as dependências principais
-poetry add bip-utils ipykernel
-
-### Ative o ambiente virtual
-poetry shell
+A Parte 1 cria uma carteira Bech32 no padrão BIP84 para testnet. A Parte 2 utiliza essa carteira para enviar satoshis na testnet, validando e monitorando a transação.
 
 ---
 
-## 🚀 Como Executar
+## 🧠 Parte 1 — Geração de carteira Bitcoin Bech32 (Testnet)
 
-## 💻 Via VS Code com Poetry
+### 📌 Descrição
 
-### Clonar o repositório principal
-git clone https://github.com/luciano-analytics/projetos.git
-cd projetos/p7
+Geração de carteiras Bitcoin no padrão Bech32 (BIP84) para a rede de testes (testnet), utilizando BIP39 para mnemônicos e BIP84 para derivação hierárquica de chaves. Estrutura modular, clara e orientada a fins educacionais e validações técnicas.
 
-### Instalar o Poetry (caso ainda não tenha)
+---
+
+### 4. 📦 Funcionalidades
+
+- Geração de frase mnemônica (BIP39)
+- Derivação da seed e da chave privada (BIP32)
+- Criação de endereço Bech32 (BIP84) para testnet (`tb1...`)
+- Exportação da chave privada no formato WIF
+- Encapsulamento em `dataclass(frozen=True)` para imutabilidade
+
+---
+
+### 5. 📘 Execução
+
+#### 💻 Via VS Code com Poetry
+
+#### Clonar o repositório
+
+#### 1) Clonar o repositório
+```bash
+git clone https://github.com/luciano-analytics/btc_wallet.git
+
+# Instalar Poetry (se necessário)
 curl -sSL https://install.python-poetry.org | python3 -
 
-### Instalar dependências e ativar ambiente virtual
+# Instalar dependências e ativar o ambiente
 poetry install
 poetry shell
 
-### Executar o script principal
+# Executar o script principal de geração
 python src/btc_wallet_testnet/create_wallet.py
 
-
-## 💻 📓 Via Jupyter Notebook
-
-### Ativar o ambiente Poetry
+````
+### 💻📓 Via Jupyter Notebook
+```bach
+# Ativar o ambiente
 poetry shell
 
-### Adicionar kernel Jupyter (se necessário)
+# (Se necessário) adicionar kernel
 poetry add ipykernel
 python -m ipykernel install --user --name btc_wallet_testnet_py --display-name "Python (btc_wallet_testnet_py)"
 
-### Abrir o notebook
+# Abrir o notebook
 jupyter notebook notebooks/geracao_carteira_btc_testnet.ipynb
+```
 
----
+### 6. 📌 Observações técnicas
 
-✅ Requisitos
+- O endereço gerado segue o padrão Bech32 da testnet (tb1...).
+- A chave privada é exportada em formato WIF, compatível com carteiras e bibliotecas comuns.
+- O módulo expõe a função gerar_carteira_bech32() para uso em notebooks e scripts.
+
+### 7. 🔐 Considerações sobre segurança
+
+As credenciais geradas neste projeto — como a chave privada e a frase mnemônica — são utilizadas exclusivamente em ambiente de testes (testnet) e não possuem valor real. Ainda assim, recomenda-se que essas informações não sejam reutilizadas em ambientes de produção, nem compartilhadas fora do contexto técnico deste projeto, evitando confusões ou uso indevido em aplicações reais.
+
+### 8. 🔁 Integração com a simulação de transação
+
+A carteira gerada aqui (chave privada WIF, chave pública e endereço Bech32) pode ser usada diretamente para realizar transações reais na testnet.
+
+- Consulta de saldo e UTXOs
+- Criação, assinatura e transmissão da transação
+- Validação do TXID e monitoramento da confirmação em exploradores públicos
+
+Pasta e arquivo: **notebooks/simular_transacao_testnet.ipynb** 
+
+Levantamento de Requisitos e planejamento do projeto de Simulação: **docs/requisitos_simulacao.md**
+
+## 🔄 Parte 2 — Simulação de transação Bitcoin na testnet
+
+### 📌 Descrição
+
+Envio de satoshis entre endereços gerados na testnet, utilizando a carteira criada na Parte 1.
+
+O fluxo contempla:
+
+* verificação de saldo, 
+* definição de parâmetros (destinatário, valor, taxa), 
+* criação + assinatura, 
+* transmissão, 
+* obtenção do TXID 
+* monitoramento com redundância de exploradores.
+
+
+## 1. 📦 Funcionalidades
+
+- Verificação de saldo e listagem de UTXOs via APIs públicas
+
+- Definição de parâmetros da transação (endereço, valor, taxa) com cálculo do máximo enviável
+
+- Criação e assinatura digital da transação
+
+- Transmissão e retorno do TXID
+
+- Registro histórico em JSON
+
+- Monitoramento da confirmação (mempool.space e Blockstream)
+
+## 2. 📘 Execução
+
+**Pré-requisito:** carteira gerada na Parte 1
+
+**Arquivo principal da simulação:** notebooks/simular_transacao_testnet.ipynb
+
+### Passos no notebook:
+
+ 1) Verificação/obtenção de saldo (faucet + API)
+
+ 2) Definição dos parâmetros (destino, valor, taxa)
+ 3) Criação, assinatura e transmissão da transação
+ 4) Validação do TXID e monitoramento da confirmação
+
+## 3. 📌 Observações técnicas
+
+- Endereços válidos na testnet devem começar com tb1 (Bech32).
+
+- A taxa (sat/kB) é utilizada para estimar o custo total com base no tamanho (vbytes).
+
+- O fluxo trata cenários com e sem troco, evitando valores abaixo do limite de poeira (dust).
+
+## 4. 📁 Banco de dados e persistência
+
+- Banco SQLite da biblioteca **bitcoinlib**:
+
+   data/bitcoinlib_testnet.db
+
+- Histórico de transações (JSON):
+   
+   data/historico_transacoes_testnet.json
+
+
+## 5. 🔐 Avisos de segurança
+
+- Use este módulo exclusivamente na rede de testes (testnet).
+
+- Nunca use dados reais de carteiras (chave privada ou frase mnemônica) neste ambiente.
+- Proteja informações sensíveis e evite compartilhá-las publicamente.
+- Verifique se os endereços começam com tb1 (Bech32 testnet).
+
+## 6. 📥 Importação da carteira no Electrum
+
+1) Inicie o Electrum com --testnet
+
+2) Crie nova carteira > “Importar chave ou endereço Bitcoin”
+3) Cole a chave privada (WIF) gerada na Parte 1
+4) Confirme e aguarde a sincronização
+📚 Documentação complementar
+Planejamento e requisitos da simulação: docs/requisitos_simulacao.md
+
+
+## 7. ✅ Requisitos projeto Simulacao
 
 - Python 3.12.3
-- [Poetry](https://python-poetry.org/docs/#installation)
-- [Visual Studio Code](https://code.visualstudio.com/)
 
-  - Extensões recomendadas:
-    - Jupyter
-    - Python
-- Jupyter Notebook (opcional, se não usar VS Code)
+- Poetry
 
----
+- VS Code (extensões: Python, Jupyter)
 
+- Jupyter Notebook (opcional)
+
+
+## 8. 📜 Licença
+Este projeto está licenciado sob a Apache License 2.0.
+
+## ⚠️ Projeto destinado a fins educacionais e validação técnica. Não utilize em produção ou com fundos reais.
