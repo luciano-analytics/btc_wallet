@@ -1,0 +1,19 @@
+[
+    {
+        "data_hora": "2025-09-01 09:32:43",
+        "txid": "c97e97d8ee11ec20a2bc0b094ac537a8e85f2778a1c4c45c4905aee94e4dd47c",
+        "valor_enviado_sat": 745,
+        "taxa_sat": 255,
+        "cenario": "SEM troco"
+    },
+    {
+        "data_hora": "2025-09-01 13:54:41",
+        "txid_reportado": "03dbcca84d8868c989288787e75969f6f3ae9510a7fe863d10299376fd5bf704",
+        "txid": "9a23e0a52d53f90f9548ca7f9fb4e62db1ce8a32e2529ed6a00d4936113acee8",
+        "corrigido": true,
+        "valor_enviado_sat": 745,
+        "taxa_sat": 255,
+        "cenario": "SEM troco",
+        "endereco_destino": "tb1q58y8wthkc09m4zzrlyqu5x3r8zwtm9d2g24q9h"
+    }
+]
